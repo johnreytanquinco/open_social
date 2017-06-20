@@ -338,6 +338,7 @@ function social_theme_setup(&$install_state) {
     'field_ui',
     'rest',
     'waterwheel',
+    'simple_oauth',
   );
   \Drupal::service('module_installer')->install($modules);
 
