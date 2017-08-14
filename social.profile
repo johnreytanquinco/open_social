@@ -339,6 +339,7 @@ function social_theme_setup(&$install_state) {
     'rest',
     'waterwheel',
     'simple_oauth',
+    'advagg'
   );
   \Drupal::service('module_installer')->install($modules);
 
