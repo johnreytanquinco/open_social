@@ -28,6 +28,9 @@
             },
             "drupal/like_and_dislike": {
                 "Fix preview on node": "https://www.drupal.org/files/issues/2848080-2-preview-fails-on-node.patch"
+            },
+            "drupal/votingapi": {
+                "Fix preview post rest request": "https://www.drupal.org/files/issues/voting_api_getting_an-2872435-13.patch"
             }
         }
     },
