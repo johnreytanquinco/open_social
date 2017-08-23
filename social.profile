@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Enables modules and site configuration for a social site installation.
@@ -8,6 +9,7 @@ use Drupal\user\Entity\User;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\features\FeaturesManagerInterface;
 use Drupal\features\ConfigurationItem;
+use \Drupal\search_api\Entity\Index;
 
 /**
  * Implements hook_install_tasks().
@@ -50,15 +52,15 @@ function social_install_tasks_alter(&$tasks, $install_state) {
 }
 
 /**
- * install_verify_requirements callback, make sure we meet custom requirement.
+ * Callback for install_verify_requirements, so that we meet custom requirement.
  *
  * @param array $install_state
  *   The current install state.
-
+ *
  * @return array
  *   All the requirements we need to meet.
  */
-function social_verify_custom_requirements(&$install_state) {
+function social_verify_custom_requirements(array &$install_state) {
   // Copy pasted from install_verify_requirements().
   // @todo when composer hits remove this.
   // Check the installation requirements for Drupal and this profile.
@@ -74,33 +76,6 @@ function social_verify_custom_requirements(&$install_state) {
       'title' => t('Address module requirements)'),
       'value' => t('Not installed'),
       'description' => t('The Address module requires the commerceguys/addressing library. <a href=":link" target="_blank">For more information check our readme</a>', array(':link' => 'https://github.com/goalgorilla/drupal_social/blob/master/readme.md#install-from-project-page-on-drupalorg')),
-      'severity' => REQUIREMENT_ERROR,
-    ];
-  }
-
-  if (!class_exists('\CommerceGuys\Enum\AbstractEnum')) {
-    $requirements['addressing_library_enum'] = [
-      'title' => t('Address module requirements)'),
-      'value' => t('Not installed'),
-      'description' => t('The Address module requires the commerceguys/enum library. <a href=":link" target="_blank">For more information check our readme</a>', array(':link' => 'https://github.com/goalgorilla/drupal_social/blob/master/readme.md#install-from-project-page-on-drupalorg')),
-      'severity' => REQUIREMENT_ERROR,
-    ];
-  }
-
-  if (!class_exists('\CommerceGuys\Intl\Country\CountryRepository')) {
-    $requirements['addressing_library_country'] = [
-      'title' => t('Address module requirements)'),
-      'value' => t('Not installed'),
-      'description' => t('The Address module requires the commerceguys/intl library. <a href=":link" target="_blank">For more information check our readme</a>', array(':link' => 'https://github.com/goalgorilla/drupal_social/blob/master/readme.md#install-from-project-page-on-drupalorg')),
-      'severity' => REQUIREMENT_ERROR,
-    ];
-  }
-
-  if (!class_exists('\CommerceGuys\Zone\Repository\ZoneRepository')) {
-    $requirements['addressing_library_zone'] = [
-      'title' => t('Address module requirements)'),
-      'value' => t('Not installed'),
-      'description' => t('The Address module requires the commerceguys/zone library. <a href=":link" target="_blank">For more information check our readme</a>', array(':link' => 'https://github.com/goalgorilla/drupal_social/blob/master/readme.md#install-from-project-page-on-drupalorg')),
       'severity' => REQUIREMENT_ERROR,
     ];
   }
@@ -164,6 +139,7 @@ function social_form_install_configure_form_alter(&$form, FormStateInterface $fo
     'social_sharing' => t('Share content on social media'),
     'social_event_type' => t('Categorize events in event types'),
     'social_sso' => t('Registration with social networks'),
+    'social_file_private' => t('Use the private file system for uploaded files (highly recommended)'),
   ];
 
   // Checkboxes to enable Optional modules.
@@ -171,7 +147,9 @@ function social_form_install_configure_form_alter(&$form, FormStateInterface $fo
     '#type' => 'checkboxes',
     '#title' => t('Enable additional features'),
     '#options' => $social_optional_modules,
-    '#default_value' => [],
+    '#default_value' => [
+      'social_file_private',
+    ],
   ];
 
   // Checkboxes to generate demo content.
@@ -197,13 +175,13 @@ function social_features_submit($form_id, &$form_state) {
 /**
  * Installs required modules via a batch process.
  *
- * @param $install_state
+ * @param array $install_state
  *   An array of information about the current installation state.
  *
- * @return
+ * @return array
  *   The batch definition.
  */
-function social_install_profile_modules(&$install_state) {
+function social_install_profile_modules(array &$install_state) {
 
   $files = system_rebuild_module_data();
 
@@ -224,6 +202,8 @@ function social_install_profile_modules(&$install_state) {
     'social_mentions' => 'social_mentions',
     'social_font' => 'social_font',
     'social_like' => 'social_like',
+    'social_post_photo' => 'social_post_photo',
+    'social_swiftmail' => 'social_swiftmail',
   );
   $social_modules = $modules;
   // Always install required modules first. Respect the dependencies between
@@ -255,7 +235,10 @@ function social_install_profile_modules(&$install_state) {
 
   $operations = array();
   foreach ($required + $non_required + $social_modules as $module => $weight) {
-    $operations[] = array('_social_install_module_batch', array(array($module), $module));
+    $operations[] = array(
+      '_social_install_module_batch',
+      array(array($module), $module),
+    );
   }
 
   $batch = array(
@@ -267,23 +250,36 @@ function social_install_profile_modules(&$install_state) {
 }
 
 /**
- * @param $install_state
+ * Final setup of Social profile.
+ *
+ * @param array $install_state
+ *   The install state.
+ *
+ * @return array
+ *   Batch settings.
  */
-function social_final_site_setup(&$install_state) {
+function social_final_site_setup(array &$install_state) {
   // Clear all status messages generated by modules installed in previous step.
   drupal_get_messages('status', TRUE);
 
-  node_access_needs_rebuild(FALSE); // There is no content at this point.
+  // There is no content at this point.
+  node_access_needs_rebuild(FALSE);
 
   $batch = array();
 
   $social_optional_modules = \Drupal::state()->get('social_install_optional_modules');
   foreach ($social_optional_modules as $module => $module_name) {
-    $batch['operations'][] = ['_social_install_module_batch', array(array($module), $module_name)];
+    $batch['operations'][] = [
+      '_social_install_module_batch',
+      array(array($module), $module_name),
+    ];
   }
   $demo_content = \Drupal::state()->get('social_install_demo_content');
   if ($demo_content === 1) {
-    $batch['operations'][] = ['_social_install_module_batch', array(array('social_demo'), 'social_demo')];
+    $batch['operations'][] = [
+      '_social_install_module_batch',
+      array(array('social_demo'), 'social_demo'),
+    ];
 
     // Generate demo content.
     $demo_content_types = [
@@ -296,14 +292,20 @@ function social_final_site_setup(&$install_state) {
       'post' => t('posts'),
       'comment' => t('comments'),
       'like' => t('likes'),
-      // TODO Add 'event_type' if module is enabled.
+      // @todo Add 'event_type' if module is enabled.
     ];
     foreach ($demo_content_types as $demo_type => $demo_description) {
-      $batch['operations'][] = ['_social_add_demo_batch', array($demo_type, $demo_description)];
+      $batch['operations'][] = [
+        '_social_add_demo_batch',
+        array($demo_type, $demo_description),
+      ];
     }
 
     // Uninstall social_demo.
-    $batch['operations'][] = ['_social_uninstall_module_batch', array(array('social_demo'), 'social_demo')];
+    $batch['operations'][] = [
+      '_social_uninstall_module_batch',
+      array(array('social_demo'), 'social_demo'),
+    ];
   }
 
   // Add some finalising steps.
@@ -315,7 +317,10 @@ function social_final_site_setup(&$install_state) {
     'import_optional_config' => t('Import optional configuration'),
   ];
   foreach ($final_batched as $process => $description) {
-    $batch['operations'][] = ['_social_finalise_batch', array($process, $description)];
+    $batch['operations'][] = [
+      '_social_finalise_batch',
+      array($process, $description),
+    ];
   }
 
   return $batch;
@@ -324,9 +329,10 @@ function social_final_site_setup(&$install_state) {
 /**
  * Install the theme.
  *
- * @param $install_state
+ * @param array $install_state
+ *   The install state.
  */
-function social_theme_setup(&$install_state) {
+function social_theme_setup(array &$install_state) {
   // Clear all status messages generated by modules installed in previous step.
   drupal_get_messages('status', TRUE);
 
@@ -339,11 +345,13 @@ function social_theme_setup(&$install_state) {
     'rest',
     'waterwheel',
     'simple_oauth',
-    'advagg'
+    'advagg',
+    'votingapi'
   );
   \Drupal::service('module_installer')->install($modules);
 
-  // Also install improved theme settings & color module, because it improves the social blue theme settings page.
+  // Also install improved theme settings & color module, because it improves
+  // the social blue theme settings page.
   $modules = array(
     'color',
   );
@@ -371,15 +379,12 @@ function social_theme_setup(&$install_state) {
 /**
  * Performs final installation steps and displays a 'finished' page.
  *
- * @param $install_state
+ * @param array $install_state
  *   An array of information about the current installation state.
  *
- * @return
- *   A message informing the user that the installation is complete.
- *
- * @see install_finished().
+ * @see install_finished()
  */
-function social_install_finished(&$install_state) {
+function social_install_finished(array &$install_state) {
   // Clear all status messages generated by modules installed in previous step.
   drupal_get_messages('status', TRUE);
 
@@ -464,7 +469,7 @@ function _social_finalise_batch($process, $description, &$context) {
       break;
 
     case 'trigger_sapi_index':
-      $indexes = \Drupal\search_api\Entity\Index::loadMultiple();
+      $indexes = Index::loadMultiple();
       /** @var \Drupal\search_api\Entity\Index $index */
       foreach ($indexes as $index) {
         $index->reindex();
@@ -481,7 +486,6 @@ function _social_finalise_batch($process, $description, &$context) {
     case 'import_optional_config':
       // We need to import all the optional configuration as well, since
       // this is not supported by Drupal Core installation profiles yet.
-
       /** @var \Drupal\features\FeaturesAssignerInterface $assigner */
       $assigner = \Drupal::service('features_assigner');
 
@@ -502,8 +506,7 @@ function _social_finalise_batch($process, $description, &$context) {
             $overrides = $manager->detectOverrides($package, TRUE);
             if (!empty($overrides) || !empty($missing)) {
               $options += array(
-                $package->getMachineName() => array(
-                ),
+                $package->getMachineName() => array(),
               );
             }
           }
@@ -537,7 +540,7 @@ function _social_finalise_batch($process, $description, &$context) {
 /**
  * Imports module config into the active store.
  *
- * @see drush_features_import().
+ * @see drush_features_import()
  */
 function social_features_import($args) {
 
