@@ -4,8 +4,6 @@ namespace Drupal\social_mentions\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Database\Database;
-use Drupal\file\Entity\File;
-use Drupal\image\Entity\ImageStyle;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,10 +11,21 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class AutocompleteController.
  *
+ * TODO Add parameters here to prevent referencing users without access to node.
+ *
  * @package Drupal\social_mentions\Controller
  */
 class AutocompleteController extends ControllerBase {
 
+  /**
+   * Function for suggestions.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *    The request.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *    Returns a JsonResponse.
+   */
   public function suggestions(Request $request) {
     $name = $request->get('term');
     $config = \Drupal::config('mentions.settings');

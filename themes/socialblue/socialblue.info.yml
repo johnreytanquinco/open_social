@@ -27,6 +27,8 @@ libraries-extend:
     - socialblue/form-controls
   socialbase/list:
     - socialblue/list
+  socialbase/spinner:
+    - socialblue/spinner
   # Extend molecules
   socialbase/breadcrumb:
     - socialblue/breadcrumb
@@ -69,6 +71,8 @@ libraries-extend:
     - socialblue/hero
   socialbase/meta:
     - socialblue/meta
+  socialbase/modal:
+    - socialblue/modal
   socialbase/offcanvas:
     - socialblue/offcanvas
   socialbase/stream:

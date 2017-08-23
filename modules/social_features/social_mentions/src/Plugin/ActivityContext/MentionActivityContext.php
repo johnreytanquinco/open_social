@@ -1,14 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\social_mentions\Plugin\ActivityContext\MentionActivityContext.
- */
-
 namespace Drupal\social_mentions\Plugin\ActivityContext;
 
 use Drupal\activity_creator\Plugin\ActivityContextBase;
-
+use Drupal\user\Entity\User;
 
 /**
  * Provides a 'MentionActivityContext' activity context.
@@ -45,10 +40,26 @@ class MentionActivityContext extends ActivityContextBase {
       if (!empty($mentions)) {
         foreach ($mentions as $mention) {
           if (isset($mention->uid)) {
-            $recipients[] = [
-              'target_type' => 'user',
-              'target_id' => $mention->getMentionedUserId(),
-            ];
+            $uid = $mention->getMentionedUserId();
+
+            // Don't send notifications to myself.
+            if ($uid === $data['actor']) {
+              continue;
+            }
+
+            $entity_storage = \Drupal::entityTypeManager()
+              ->getStorage($mention->getMentionedEntityTypeId());
+            $mentioned_entity = $entity_storage->load($mention->getMentionedEntityId());
+
+            $account = User::load($uid);
+            $access = $mentioned_entity->access('view', $account);
+
+            if ($access) {
+              $recipients[] = [
+                'target_type' => 'user',
+                'target_id' => $mention->getMentionedUserId(),
+              ];
+            }
           }
         }
       }
@@ -58,6 +69,9 @@ class MentionActivityContext extends ActivityContextBase {
     return $recipients;
   }
 
+  /**
+   * Check for valid entity.
+   */
   public function isValidEntity($entity) {
     if ($entity->getEntityTypeId() === 'mentions') {
       return TRUE;
@@ -76,8 +90,11 @@ class MentionActivityContext extends ActivityContextBase {
     return FALSE;
   }
 
+  /**
+   * Get the mentions from the related entity.
+   */
   public function getMentionsFromRelatedEntity($entity) {
-    if($entity->getEntityTypeId() === 'comment'){
+    if ($entity->getEntityTypeId() === 'comment') {
       if ($entity->getParentComment()) {
         $entity = $entity->getParentComment();
       }
