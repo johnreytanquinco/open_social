@@ -21,13 +21,17 @@
         "patches": {
             "drupal/core": {
                 "Clean up user input for exposed checkboxes": "https://www.drupal.org/files/issues/2687773-18-Cleanup-user-input-for-checkboxes-8.2.patch",
-                "Color module html preview optional": "https://www.drupal.org/files/issues/color-optional-html-preview-2844190-2.patch"
+                "Color module html preview optional": "https://www.drupal.org/files/issues/color-optional-html-preview-2844190-2.patch",
+                "VirtualDocumentRoot with cs and js aggregation": "https://www.drupal.org/files/issues/2260969_54%20404%20on%20VirtualDocumentRoot%20with%20cs-js%20aggregation.patch"
             },
             "drupal/like_and_dislike": {
                 "Fix preview on node": "https://www.drupal.org/files/issues/2848080-2-preview-fails-on-node.patch"
             },
             "drupal/votingapi": {
                 "Fix preview post rest request": "https://www.drupal.org/files/issues/voting_api_getting_an-2872435-13.patch"
+            },
+            "drupal/simple_oauth": {
+                "Fix user ID not found": "https://www.drupal.org/files/issues/2883862--user_id-not-found-and-security-update--25.patch"
             }
         }
     },
