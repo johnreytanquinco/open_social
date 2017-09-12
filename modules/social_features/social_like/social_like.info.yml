@@ -3,9 +3,25 @@ description: 'Provides Like voting functionality for Open Social.'
 type: module
 core: 8.x
 dependencies:
+  - activity_logger
   - block
-  - system
-  - views
-  - votingapi
+  - dynamic_entity_reference
+  - field
+  - file
+  - group_core_comments
   - like_and_dislike
+  - message
+  - node
+  - options
+  - profile
+  - social_comment
+  - social_post
+  - social_profile
+  - social_topic
+  - system
+  - text
+  - user
+  - views
+  - views_infinite_scroll
+  - votingapi
 package: Social
