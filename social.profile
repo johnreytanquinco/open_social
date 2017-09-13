@@ -346,7 +346,9 @@ function social_theme_setup(array &$install_state) {
     'waterwheel',
     'simple_oauth',
     'advagg',
-    'votingapi'
+    'votingapi',
+    'openid_connect',
+    'big_pipe'
   );
   \Drupal::service('module_installer')->install($modules);
 
