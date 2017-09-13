@@ -345,7 +345,6 @@ function social_theme_setup(array &$install_state) {
     'rest',
     'waterwheel',
     'simple_oauth',
-    'advagg',
     'votingapi',
     'openid_connect',
     'big_pipe'
