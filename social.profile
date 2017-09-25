@@ -347,7 +347,14 @@ function social_theme_setup(array &$install_state) {
     'simple_oauth',
     'votingapi',
     'openid_connect',
-    'big_pipe'
+    'big_pipe',
+    'components',
+    'ui_patterns',
+    'ui_patterns_ds',
+    'ui_patterns_field_group',
+    'ui_patterns_layouts',
+    'ui_patterns_library',
+    'ui_patterns_views'
   );
   \Drupal::service('module_installer')->install($modules);
 
