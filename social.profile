@@ -343,6 +343,7 @@ function social_theme_setup(array &$install_state) {
     'dblog',
     'field_ui',
     'rest',
+    'ds',
     'waterwheel',
     'simple_oauth',
     'votingapi',
