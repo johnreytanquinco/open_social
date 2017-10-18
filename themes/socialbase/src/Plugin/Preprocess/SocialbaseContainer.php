@@ -3,7 +3,6 @@
 namespace Drupal\socialbase\Plugin\Preprocess;
 
 use Drupal\bootstrap\Plugin\Preprocess\PreprocessBase;
-use Drupal\bootstrap\Plugin\Preprocess\PreprocessInterface;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
 /**
@@ -13,12 +12,13 @@ use Symfony\Cmf\Component\Routing\RouteObjectInterface;
  *
  * @BootstrapPreprocess("container")
  */
-class SocialbaseContainer extends PreprocessBase implements PreprocessInterface {
+class SocialbaseContainer extends PreprocessBase {
 
   /**
    * {@inheritdoc}
    */
   public function preprocess(array &$variables, $hook, array $info) {
+    parent::preprocess($variables, $hook, $info);
 
     // For pages in search we would like to render containers without divs.
     $routename = \Drupal::request()
