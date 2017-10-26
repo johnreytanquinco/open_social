@@ -43,9 +43,6 @@
             },
             "drupal/url_embed": {
                 "WSOD if wrong url or network unavailable": "https://www.drupal.org/files/issues/url_embed_WSOD_convert_url_to_embed-2871744-5.patch"
-            },
-            "drupal/simple_oauth": {
-                "User ID not found": "https://www.drupal.org/files/issues/2883862--user_id-not-found-and-security-update--25.patch"
             }
         }
     },
