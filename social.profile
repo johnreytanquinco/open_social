@@ -344,6 +344,7 @@ function social_theme_setup(array &$install_state) {
     'field_ui',
     'rest',
     'ds',
+    'jsonapi',
     'waterwheel',
     'simple_oauth',
     'votingapi',
