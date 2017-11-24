@@ -4,19 +4,19 @@ social_user.groups:
   title: Groups
 
 social_group.about:
-  route_name: view.group_information.page_group_about
+  route_name: view.about_component.page_group_about
   base_route: entity.group.canonical
   title: About
 
-social_group.events:
-  route_name: view.group_events.page_group_events
+social_group.platforms:
+  route_name: view.trading_platform.page_group_platforms
   base_route: entity.group.canonical
-  title: Events
+  title: Trading Platform
 
-social_group.topics:
-  route_name: view.group_topics.page_group_topics
+social_group.symbols:
+  route_name: view.symbol.page_group_symbols
   base_route: entity.group.canonical
-  title: Topics
+  title: Symbols
 
 social_group.members:
   route_name: view.group_members.page_group_members
