@@ -356,7 +356,11 @@ function social_theme_setup(array &$install_state) {
     'ui_patterns_field_group',
     'ui_patterns_layouts',
     'ui_patterns_library',
-    'ui_patterns_views'
+    'ui_patterns_views',
+    'pathauto',
+    'ctools',
+    'chart_post',
+    'business_profile'
   );
   \Drupal::service('module_installer')->install($modules);
 
@@ -365,12 +369,12 @@ function social_theme_setup(array &$install_state) {
   $modules = ['color'];
   \Drupal::service('module_installer')->install($modules);
 
-  $themes = ['socialblue'];
+  $themes = ['bootstrap_patterns'];
   \Drupal::service('theme_handler')->install($themes);
 
   \Drupal::configFactory()
     ->getEditable('system.theme')
-    ->set('default', 'socialblue')
+    ->set('default', 'bootstrap_patterns')
     ->save();
 
   // Ensure that the install profile's theme is used.
