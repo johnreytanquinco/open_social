@@ -360,7 +360,8 @@ function social_theme_setup(array &$install_state) {
     'pathauto',
     'ctools',
     'chart_post',
-    'business_profile'
+    'business_profile',
+    'bootstrap_patterns'
   );
   \Drupal::service('module_installer')->install($modules);
 
