@@ -52,6 +52,9 @@
             },
             "drupal/private_message": {
                 "Email notification settings are not taken into account": "https://www.drupal.org/files/issues/2910537-2.patch"
+            },
+            "drupal/votingapi": {
+                "Voting API: Getting an access denied or 403 response using GET method": "https://www.drupal.org/files/issues/voting_api_getting_an-2872435-13.patch"
             }
         }
     },
