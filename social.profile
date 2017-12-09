@@ -361,7 +361,8 @@ function social_theme_setup(array &$install_state) {
     'ctools',
     'chart_post',
     'business_profile',
-    'bootstrap_patterns'
+    'bootstrap_patterns',
+    'static_page'
   );
   \Drupal::service('module_installer')->install($modules);
 
