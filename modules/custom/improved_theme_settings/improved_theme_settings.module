@@ -174,9 +174,6 @@ function improved_theme_settings_page_attachments(array &$page) {
       }
     }
   }
-<<<<<<< HEAD
-}
-=======
 }
 
 /**
@@ -191,4 +188,3 @@ function improved_theme_settings_get_setting($setting, $themename) {
   }
   return $themevar;
 }
->>>>>>> remotes/upstream/8.x-1.x
