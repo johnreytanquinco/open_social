@@ -53,6 +53,9 @@
             },
             "drupal/votingapi": {
                 "Voting API: Getting an access denied or 403 response using GET method": "https://www.drupal.org/files/issues/voting_api_getting_an-2872435-13.patch"
+            },
+            "drupal/openid_connect": {
+                "Secured URL does not apply to its configuration": "https://www.drupal.org/files/issues/openid_connect-secured-url-does-not-apply-2921477-14.patch"
             }
         }
     },
