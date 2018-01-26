@@ -363,7 +363,8 @@ function social_theme_setup(array &$install_state) {
     'business_profile',
     'bootstrap_patterns',
     'static_page',
-    'article'
+    'article',
+    'message_example'
   );
   \Drupal::service('module_installer')->install($modules);
 
