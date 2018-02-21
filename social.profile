@@ -364,7 +364,8 @@ function social_theme_setup(array &$install_state) {
     'bootstrap_patterns',
     'static_page',
     'article',
-    'message_example'
+    'message_example',
+    'openid_connect_rest'
   );
   \Drupal::service('module_installer')->install($modules);
 
