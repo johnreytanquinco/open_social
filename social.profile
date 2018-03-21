@@ -366,7 +366,8 @@ function social_theme_setup(array &$install_state) {
     'article',
     'message_example',
     'openid_connect_rest',
-    'graphql'
+    'graphql',
+    'rules'
   );
   \Drupal::service('module_installer')->install($modules);
 
