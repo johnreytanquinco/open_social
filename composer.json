@@ -140,6 +140,7 @@
         "drupal/graphql": "3.0-beta5",
         "norkunas/onesignal-php-api": "^1.0",
         "php-http/guzzle6-adapter": "^1.1",
-        "drupal/rules": "3.0-alpha3"
+        "drupal/rules": "3.0-alpha3",
+        "drush/drush": "^9.2"
     }
 }
