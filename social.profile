@@ -365,7 +365,6 @@ function social_theme_setup(array &$install_state) {
     'static_page',
     'article',
     'message_example',
-    'openid_connect_rest',
     'graphql',
     'rules'
   );
