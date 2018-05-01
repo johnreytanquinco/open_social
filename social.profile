@@ -366,7 +366,11 @@ function social_theme_setup(array &$install_state) {
     'article',
     'message_example',
     'graphql',
-    'rules'
+    'rules',
+    'metatag',
+    'metatag_open_graph',
+    'opengraph_filter',
+    'extlink_preview'
   );
   \Drupal::service('module_installer')->install($modules);
 
