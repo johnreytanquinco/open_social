@@ -365,8 +365,13 @@ function social_theme_setup(array &$install_state) {
     'static_page',
     'article',
     'message_example',
-    'openid_connect_rest',
-    'graphql'
+    'graphql',
+    'rules',
+    'metatag',
+    'metatag_open_graph',
+    'opengraph_filter',
+    'extlink_preview',
+    'custom_rules'
   );
   \Drupal::service('module_installer')->install($modules);
 
