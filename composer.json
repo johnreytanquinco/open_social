@@ -142,7 +142,7 @@
         "npm-asset/diff": "^3.4",
         "drupal/ctools": "3.0",
         "drupal/pathauto": "1.0",
-        "drupal/static_page": "1.0-alpha1"
+        "drupal/static_page": "1.0-alpha1",
         "drupal/openid_connect_rest": "1.0-rc1",
         "drupal/graphql": "3.0-beta5",
         "norkunas/onesignal-php-api": "^1.0",
