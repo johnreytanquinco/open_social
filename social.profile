@@ -361,7 +361,6 @@ function social_theme_setup(array &$install_state) {
     'ctools',
     'chart_post',
     'business_profile',
-    'bootstrap_patterns',
     'static_page',
     'article',
     'message_example',
