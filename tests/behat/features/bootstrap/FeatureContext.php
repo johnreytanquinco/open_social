@@ -873,6 +873,6 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
         $elements = $this->getSession()->getPage()->findAll('css', $element);
         $counter = count($elements);
 
-        \Drupal::logger('trading_pattern')->notice('Counter #: ' . $counter);
+        \Drupal::logger('behat_test')->notice('Counter #: ' . $counter);
     }
 }
