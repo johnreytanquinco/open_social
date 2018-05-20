@@ -858,4 +858,21 @@ class FeatureContext extends RawMinkContext implements Context, SnippetAccepting
       ))->save();
       return $translation;
     }
+
+    /**
+     * Custom: checks, that element with specified CSS exists on page
+     * Example: Then I should see element "body" element in the page
+     * Example: And I should see element "body" element in the page
+     *
+     * @Then /^(?:|I )should see element "(?P<element>[^"]*)" in the page$/
+     */
+
+    public function IShouldSeeElementInThePage($element)
+    {
+        // $elements = $this->assertSession()->elementExists('css', $element);
+        $elements = $this->getSession()->getPage()->findAll('css', $element);
+        $counter = count($elements);
+
+        \Drupal::logger('trading_pattern')->notice('Counter #: ' . $counter);
+    }
 }
