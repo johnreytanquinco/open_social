@@ -13,6 +13,7 @@ default:
         features: '/opt/app-root/src/html/profiles/contrib/open_social/tests/behat/features'
         bootstrap: '/opt/app-root/src/html/profiles/contrib/open_social/tests/behat/features/bootstrap'
       contexts:
+        - ApiFeatureContext
         - FeatureContext
         - SocialDrupalContext
         - SocialMinkContext
@@ -20,6 +21,9 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - PostContext
         - EmailContext
+        - Ubirak\RestApiBehatExtension\RestApiContext
+        - Ubirak\RestApiBehatExtension\Json\JsonContext
+        - Imbo\BehatApiExtension\Context\ApiContext
   extensions:
       Behat\MinkExtension:
         default_session: 'selenium2'
@@ -51,3 +55,12 @@ default:
           'Modal footer': '.modal-footer'
           'WYSIWYG Image dialog': '.editor-image-dialog .form-actions'
           'WYSIWYG Embed dialog': '.url-embed-dialog .form-actions'
+      Ubirak\RestApiBehatExtension\Extension:
+        rest:
+          base_url: 'http://172.17.0.1:8080/'
+          store_response: true
+      Imbo\BehatApiExtension:
+        apiClient:
+          base_uri: 'http://172.17.0.1:8080/'
+          timeout: 5.0
+          verify: false
