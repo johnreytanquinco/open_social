@@ -151,6 +151,7 @@
         "npm-asset/photoswipe": "^4.1.2",
         "drupal/metatag": "1.5",
         "drupal/opengraph_filter": "1.0-beta3",
-        "drupal/external_link_preview": "1.x-dev"
+        "drupal/external_link_preview": "1.x-dev",
+        "drupal/auto_entitylabel": "2.1-beta1"
     }
 }

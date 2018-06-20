@@ -371,7 +371,8 @@ function social_theme_setup(array &$install_state) {
     'opengraph_filter',
     'extlink_preview',
     'custom_rules',
-    'trading_pattern'
+    'trading_pattern',
+    'auto_entitylabel'
   );
   \Drupal::service('module_installer')->install($modules);
 
