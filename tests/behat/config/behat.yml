@@ -62,5 +62,5 @@ default:
       Imbo\BehatApiExtension:
         apiClient:
           base_uri: 'http://172.17.0.1:8080/'
-          timeout: 5.0
+          timeout: 180
           verify: false

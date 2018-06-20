@@ -5,14 +5,7 @@ Feature: Create Post
   Goal/desire: I want to create Posts
 
   Scenario: Successfully create, edit and delete post
-  Given users:
-      | name      | status | pass |
-      | PostCreateUser1 |      1 | PostCreateUser1 |
-      | PostCreateUser2 |      1 | PostCreateUser2 |
-    And I am logged in as "PostCreateUser1"
-    And I am on the homepage
-  And I should not see "PostCreateUser1" in the "Main content front"
-  When I fill in "Say something to the Community" with "This is a public post."
+  Given I fill in "Say something to the Community" with "This is a public post."
     And I select post visibility "Public"
     And I press "Post"
    Then I should see the success message "Your post has been posted."
