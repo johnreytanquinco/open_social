@@ -23,6 +23,10 @@
 
   {{ date }}
 
+  {% if content.field_pattern_title %}
+    {{- content.field_pattern_title -}}
+  {% endif %}
+
   {% if content.field_pattern %}
     {{- content.field_pattern -}}
   {% endif %}
