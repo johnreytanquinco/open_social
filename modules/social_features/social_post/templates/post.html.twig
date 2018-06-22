@@ -17,11 +17,21 @@
 #}
 <div{{ attributes.addClass('card', 'post') }}>
 
-  {% if content.user_id %}
-    {{- content.user_id -}}
-  {% endif %}
-
-  {{ date }}
+  <div class="media">
+    <div class="media-left avatar">
+      {% if author_picture %}
+        {{ author_picture }}
+      {% endif %}
+    </div>
+    <div class="media-body">
+      <div class="media-heading text-m">
+        {% if content.user_id %}
+          {{ content.user_id }}
+        {% endif %}
+        <div class="post-date">{{ date }}</div>
+      </div>
+    </div>
+  </div>
 
   {% if content.field_pattern_title %}
     {{- content.field_pattern_title -}}
