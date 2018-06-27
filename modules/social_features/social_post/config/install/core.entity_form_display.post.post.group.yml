@@ -1,3 +1,4 @@
+uuid: 6384285b-1961-4438-b7f5-31c960796f86
 langcode: en
 status: true
 dependencies:
@@ -11,6 +12,8 @@ dependencies:
     - social_post.post_type.post
   module:
     - dropdown
+_core:
+  default_config_hash: '-PaOoGcLR3d_mbc-rFsM3CTMY7cjRrxAHPEkkHxfcwM'
 id: post.post.group
 targetEntityType: post
 bundle: post

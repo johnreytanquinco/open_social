@@ -1,7 +1,10 @@
+uuid: 904d8993-a554-46fb-b86a-3eb8e8f275f5
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.post.post.field_pattern
+    - field.field.post.post.field_pattern_title
     - field.field.post.post.field_post
     - field.field.post.post.field_post_comments
     - field.field.post.post.field_recipient_group
@@ -9,35 +12,79 @@ dependencies:
     - field.field.post.post.field_visibility
     - social_post.post_type.post
   module:
+    - dropdown
+    - extlink_preview
     - social_post
-    - text
     - user
+_core:
+  default_config_hash: JNBwWHCvAmeyGNkIo_1Kt38Bp6d31CU8MNgWNQ2Xd-E
 id: post.post.default
 targetEntityType: post
 bundle: post
 mode: default
 content:
-  field_post:
-    type: text_default
-    weight: 1
+  field_pattern:
+    weight: 5
     label: hidden
-    settings: {  }
+    settings:
+      view_mode: activity
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_pattern_title:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: true
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_post:
+    type: extlink_preview
+    weight: 6
+    label: hidden
+    settings:
+      show_title: 'Y'
+      show_image: 'Y'
+      trim_link_description: '265'
     third_party_settings: {  }
     region: content
   field_post_comments:
     type: comment_post
-    weight: 3
+    weight: 8
     label: hidden
     settings:
       num_comments: '0'
       order: DESC
     third_party_settings: {  }
     region: content
-  like_and_dislike:
-    weight: 2
+  field_recipient_group:
+    type: entity_reference_entity_id
+    weight: 1
+    region: content
+    label: above
     settings: {  }
     third_party_settings: {  }
+  field_recipient_user:
+    type: author
+    weight: 2
     region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_visibility:
+    type: dropdown_field_formatter
+    weight: 3
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  like_and_dislike:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   user_id:
     label: hidden
     type: author
@@ -45,7 +92,4 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-hidden:
-  field_recipient_group: true
-  field_recipient_user: true
-  field_visibility: true
+hidden: {  }

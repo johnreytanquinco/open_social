@@ -1,17 +1,18 @@
+uuid: 4a91edc6-3c97-403c-96e1-76f1473ae6b9
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.post.field_recipient_group
-    - social_post.post_type.photo
-id: post.photo.field_recipient_group
+    - social_post.post_type.finfeed
+id: post.finfeed.field_recipient_group
 field_name: field_recipient_group
 entity_type: post
-bundle: photo
+bundle: finfeed
 label: 'Recipient (group)'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -1,8 +1,11 @@
+uuid: 9315ff66-eb82-439d-9012-ebf7d2dec2af
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.post.activity
+    - field.field.post.post.field_pattern
+    - field.field.post.post.field_pattern_title
     - field.field.post.post.field_post
     - field.field.post.post.field_post_comments
     - field.field.post.post.field_recipient_group
@@ -10,24 +13,46 @@ dependencies:
     - field.field.post.post.field_visibility
     - social_post.post_type.post
   module:
+    - extlink_preview
     - social_post
-    - text
     - user
+_core:
+  default_config_hash: pLYf_ksbMuPRgvNAYgZPNbnvd1psyqdXTjer1T1J9m0
 id: post.post.activity
 targetEntityType: post
 bundle: post
 mode: activity
 content:
-  field_post:
-    type: text_default
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
+  field_pattern:
+    type: entity_reference_entity_view
+    weight: 2
     region: content
+    label: hidden
+    settings:
+      view_mode: activity
+      link: false
+    third_party_settings: {  }
+  field_pattern_title:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: true
+    third_party_settings: {  }
+  field_post:
+    type: extlink_preview
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      show_title: 'Y'
+      show_image: 'Y'
+      trim_link_description: '265'
+    third_party_settings: {  }
   field_post_comments:
     type: comment_post
-    weight: 3
+    weight: 5
     label: hidden
     settings:
       num_comments: '2'
@@ -35,10 +60,10 @@ content:
     third_party_settings: {  }
     region: content
   like_and_dislike:
-    weight: 2
+    weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   user_id:
     label: hidden
     type: author

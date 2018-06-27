@@ -1,0 +1,30 @@
+uuid: 82ea187d-312a-4bf6-8d52-20c3f9981c30
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - hal
+    - serialization
+    - simple_oauth
+    - social_post
+    - user
+    - waterwheel_json_schema
+id: entity.post
+plugin_id: 'entity:post'
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+    - DELETE
+    - PATCH
+  formats:
+    - hal_json
+    - json
+    - xml
+    - json_schema
+  authentication:
+    - basic_auth
+    - oauth2
+    - cookie

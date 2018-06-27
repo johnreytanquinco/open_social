@@ -1,7 +1,10 @@
+uuid: b085de45-0f81-478d-9ad0-679a62d85253
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.post.post.field_pattern
+    - field.field.post.post.field_pattern_title
     - field.field.post.post.field_post
     - field.field.post.post.field_post_comments
     - field.field.post.post.field_recipient_group
@@ -10,14 +13,34 @@ dependencies:
     - social_post.post_type.post
   module:
     - dropdown
+    - text
+_core:
+  default_config_hash: D_lAbKlWVtC-EoJYOYz3fzjV8Wt-NlN-DIiJ2ULNYEY
 id: post.post.default
 targetEntityType: post
 bundle: post
 mode: default
 content:
-  field_post:
-    type: string_textarea
+  field_pattern:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_pattern_title:
     weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_post:
+    type: text_textarea
+    weight: 1
     label: hidden
     settings:
       rows: 5
@@ -26,7 +49,7 @@ content:
     region: content
   field_visibility:
     type: dropdown_widget_type
-    weight: 1
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     region: content

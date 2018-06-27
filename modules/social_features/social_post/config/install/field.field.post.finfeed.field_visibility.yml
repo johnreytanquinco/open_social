@@ -1,20 +1,21 @@
+uuid: 50a9072b-7cf3-4803-9909-479c10e5ca3a
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.post.field_visibility
-    - social_post.post_type.photo
+    - social_post.post_type.finfeed
   module:
     - dropdown
-id: post.photo.field_visibility
+id: post.finfeed.field_visibility
 field_name: field_visibility
 entity_type: post
-bundle: photo
+bundle: finfeed
 label: Visibility
 description: ''
 required: true
-translatable: false
-default_value: ~
+translatable: true
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: dropdown

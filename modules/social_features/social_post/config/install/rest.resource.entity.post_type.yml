@@ -1,0 +1,27 @@
+uuid: ccf09792-df61-410a-aad6-6b8bcec33af3
+langcode: en
+status: false
+dependencies:
+  module:
+    - basic_auth
+    - hal
+    - serialization
+    - simple_oauth
+    - social_post
+    - user
+    - waterwheel_json_schema
+id: entity.post_type
+plugin_id: 'entity:post_type'
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - hal_json
+    - json
+    - xml
+    - json_schema
+  authentication:
+    - basic_auth
+    - oauth2
+    - cookie

@@ -1,3 +1,4 @@
+uuid: deffb1dc-fb47-4193-94e6-d5e3d09be55e
 langcode: en
 status: true
 dependencies:
@@ -6,20 +7,22 @@ dependencies:
     - system
   theme:
     - socialbase
-id: postonprofileblock
+_core:
+  default_config_hash: P48P5vAKh5cdHENgfiw66njirMIylYzdKUN2jOQg00o
+id: postblock
 theme: socialbase
 region: hidden
-weight: -9
+weight: -7
 provider: null
-plugin: post_profile_block
+plugin: post_block
 settings:
-  id: post_profile_block
-  label: 'Post on profile block'
+  id: post_block
+  label: 'Post block'
   provider: social_post
   label_display: '0'
 visibility:
   request_path:
     id: request_path
-    pages: '/user/*/stream'
+    pages: /stream
     negate: false
     context_mapping: {  }

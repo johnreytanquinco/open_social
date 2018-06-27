@@ -1,9 +1,12 @@
+uuid: cc2a2969-d616-40e5-a4ee-1e4873d5a071
 langcode: en
 status: true
 dependencies:
   module:
     - group
     - social_post
+_core:
+  default_config_hash: tU_PYT-wu36DVEwlFn0mtZn-2qkQ0S1Xv24V6KHI-K4
 id: post.field_recipient_group
 field_name: field_recipient_group
 entity_type: post

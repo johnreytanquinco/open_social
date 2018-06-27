@@ -1,18 +1,19 @@
+uuid: 55da94c4-a901-4903-b53d-d71b263e6908
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.post.field_post
-    - social_post.post_type.photo
+    - social_post.post_type.finfeed
   module:
     - text
-id: post.photo.field_post
+id: post.finfeed.field_post
 field_name: field_post
 entity_type: post
-bundle: photo
+bundle: finfeed
 label: Post
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

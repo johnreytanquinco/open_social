@@ -1,3 +1,4 @@
+uuid: 8c856a81-32cd-4dd3-99d9-3afd4eb10aec
 langcode: en
 status: true
 dependencies:
@@ -12,6 +13,8 @@ dependencies:
   module:
     - text
     - user
+_core:
+  default_config_hash: 9gulmheZg0DioReaTCSx_BhT3fuYtbBa_3MgZ-VDk6g
 id: post.post.activity_comment
 targetEntityType: post
 bundle: post

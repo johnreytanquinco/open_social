@@ -17,21 +17,25 @@
 #}
 <div{{ attributes.addClass('card', 'post') }}>
 
-  <div class="media">
-    <div class="media-left avatar">
-      {% if author_picture %}
-        {{ author_picture }}
+<div class="media">
+  <div class="media-left avatar">
+    {% if author_picture %}
+      {{ author_picture }}
+    {% endif %}
+  </div>
+  <div class="media-body">
+    <div class="media-heading text-m">
+      {% if content.user_id %}
+        {{ content.user_id }}
       {% endif %}
-    </div>
-    <div class="media-body">
-      <div class="media-heading text-m">
-        {% if content.user_id %}
-          {{ content.user_id }}
-        {% endif %}
-        <div class="post-date">{{ date }}</div>
-      </div>
+      <div class="post-date">{{ date }}</div>
     </div>
   </div>
+</div>
+
+  {% if content.field_post_image %}
+    {{- content.field_post_image -}}
+  {% endif %}
 
   {% if content.field_pattern_title %}
     {{- content.field_pattern_title -}}
@@ -43,10 +47,6 @@
 
   {% if content.field_finfeed1 %}
     {{- content.field_finfeed1 -}}
-  {% endif %}
-    
-  {% if content.field_post_image %}
-    {{- content.field_post_image -}}
   {% endif %}
 
   {% if content.field_post %}

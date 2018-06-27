@@ -1,9 +1,12 @@
+uuid: 843de3ea-d0c2-49fc-9aee-3e4f0d699c6b
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.post.field_recipient_user
     - social_post.post_type.post
+_core:
+  default_config_hash: lp10ScgbXp069od5iTgXkrk7824GuA4X6QIr4HvjZ7g
 id: post.post.field_recipient_user
 field_name: field_recipient_user
 entity_type: post

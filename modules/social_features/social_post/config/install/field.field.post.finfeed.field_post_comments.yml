@@ -1,15 +1,16 @@
+uuid: 9e08be90-15db-4edf-8486-36edbad72a05
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.post.field_post_comments
-    - social_post.post_type.photo
+    - social_post.post_type.finfeed
   module:
     - comment
-id: post.photo.field_post_comments
+id: post.finfeed.field_post_comments
 field_name: field_post_comments
 entity_type: post
-bundle: photo
+bundle: finfeed
 label: 'Post comments'
 description: ''
 required: false
