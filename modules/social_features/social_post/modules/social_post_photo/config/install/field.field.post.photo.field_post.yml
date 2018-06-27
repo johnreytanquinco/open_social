@@ -3,16 +3,16 @@ status: true
 dependencies:
   config:
     - field.storage.post.field_post
-    - social_post.post_type.finfeed
+    - social_post.post_type.photo
   module:
     - text
-id: post.finfeed.field_post
+id: post.photo.field_post
 field_name: field_post
 entity_type: post
-bundle: finfeed
+bundle: photo
 label: Post
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

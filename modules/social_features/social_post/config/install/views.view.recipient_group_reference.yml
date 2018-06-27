@@ -1,11 +1,8 @@
-uuid: 7c73cbb3-a851-4ffb-9946-d83411bd005b
 langcode: en
 status: true
 dependencies:
   module:
     - group
-_core:
-  default_config_hash: XwB1tiTp_9hTMfUH0z-CjJOB-tVgjrvHu_7hRDrOcQw
 id: recipient_group_reference
 label: recipient_group_reference
 module: views

@@ -1,11 +1,8 @@
-uuid: e30d6426-190a-4451-98e8-c9e41d32b535
 langcode: en
 status: true
 dependencies:
   module:
     - social_post
-_core:
-  default_config_hash: C7jN5Ir6IticKf_T5catiIapjlD2RLRF6P-Y13NCqfQ
 id: post.activity
 label: Activity
 targetEntityType: post

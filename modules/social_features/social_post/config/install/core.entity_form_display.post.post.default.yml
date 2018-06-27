@@ -1,4 +1,3 @@
-uuid: b085de45-0f81-478d-9ad0-679a62d85253
 langcode: en
 status: true
 dependencies:
@@ -14,8 +13,6 @@ dependencies:
   module:
     - dropdown
     - text
-_core:
-  default_config_hash: D_lAbKlWVtC-EoJYOYz3fzjV8Wt-NlN-DIiJ2ULNYEY
 id: post.post.default
 targetEntityType: post
 bundle: post

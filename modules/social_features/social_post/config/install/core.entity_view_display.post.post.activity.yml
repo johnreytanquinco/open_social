@@ -1,4 +1,3 @@
-uuid: 9315ff66-eb82-439d-9012-ebf7d2dec2af
 langcode: en
 status: true
 dependencies:
@@ -16,8 +15,6 @@ dependencies:
     - extlink_preview
     - social_post
     - user
-_core:
-  default_config_hash: pLYf_ksbMuPRgvNAYgZPNbnvd1psyqdXTjer1T1J9m0
 id: post.post.activity
 targetEntityType: post
 bundle: post

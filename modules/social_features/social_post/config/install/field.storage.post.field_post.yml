@@ -1,12 +1,9 @@
-uuid: e6b067a3-f59d-4dee-b6db-91425fb9cfb0
 langcode: en
 status: true
 dependencies:
   module:
     - social_post
     - text
-_core:
-  default_config_hash: c54Ovci6FJDLI_-xmGiTv17AFGkTVZt6jutqTQvS8ns
 id: post.field_post
 field_name: field_post
 entity_type: post

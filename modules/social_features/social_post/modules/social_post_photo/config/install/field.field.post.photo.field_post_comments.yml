@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.storage.post.field_post_comments
-    - social_post.post_type.finfeed
+    - social_post.post_type.photo
   module:
     - comment
-id: post.finfeed.field_post_comments
+id: post.photo.field_post_comments
 field_name: field_post_comments
 entity_type: post
-bundle: finfeed
+bundle: photo
 label: 'Post comments'
 description: ''
 required: false
