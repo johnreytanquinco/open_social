@@ -24,6 +24,8 @@ content:
     settings:
       comment:
         view_mode: activity
+      consumer:
+        view_mode: default
       node:
         view_mode: activity
       crop:
@@ -32,13 +34,23 @@ content:
         view_mode: default
       flagging:
         view_mode: default
+      font:
+        view_mode: default
       group:
         view_mode: stream
+      mentions:
+        view_mode: default
       message:
+        view_mode: default
+      oauth2_token:
         view_mode: default
       post:
         view_mode: activity
       search_api_task:
+        view_mode: default
+      vote:
+        view_mode: default
+      vote_result:
         view_mode: default
       activity:
         view_mode: default

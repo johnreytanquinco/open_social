@@ -3,11 +3,12 @@ status: true
 dependencies:
   config:
     - block.block.postongroupblock
+    - user.role.authenticated
   module:
     - activity_creator
     - activity_viewer
-    - group
     - options
+    - user
 id: activity_stream_group
 label: activity_stream_group
 module: views
@@ -24,9 +25,10 @@ display:
     position: 0
     display_options:
       access:
-        type: group_permission
+        type: role
         options:
-          group_permission: 'view group stream page'
+          role:
+            authenticated: authenticated
       cache:
         type: none
         options: {  }
@@ -313,11 +315,11 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - group_membership.roles.permissions
         - 'languages:language_interface'
         - route
         - url
         - url.query_args
+        - user.roles
       tags:
         - 'config:core.entity_view_display.activity.activity.default'
         - 'config:core.entity_view_display.activity.activity.notification'
@@ -333,11 +335,11 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - group_membership.roles.permissions
         - 'languages:language_interface'
         - route
         - url
         - url.query_args
+        - user.roles
       tags:
         - 'config:core.entity_view_display.activity.activity.default'
         - 'config:core.entity_view_display.activity.activity.notification'
