@@ -50,3 +50,7 @@ Feature: Generating and checking REST API request in json format
 	  #Then the "user_id" property should contain "superuser"
 	  #And the "Content-Type" header should be "application/json"
 	  
+	Scenario: Checking infinite scroll feature
+	  Given I am an anonymous user
+	  And I am on the homepage  
+	  And I should see element ".js-pager__items" in the page
