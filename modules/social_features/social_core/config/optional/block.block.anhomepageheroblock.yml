@@ -12,7 +12,7 @@ dependencies:
 id: anhomepageheroblock
 theme: socialbase
 region: hero
-weight: -15
+weight: -20
 provider: null
 plugin: 'block_content:8bb9d4bb-f182-4afc-b138-8a4b802824e4'
 settings:

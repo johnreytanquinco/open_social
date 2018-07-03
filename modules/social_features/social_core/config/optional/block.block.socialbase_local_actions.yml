@@ -5,8 +5,8 @@ dependencies:
     - socialbase
 id: socialbase_local_actions
 theme: socialbase
-region: complementary_top
-weight: -18
+region: content
+weight: -25
 provider: null
 plugin: local_actions_block
 settings:

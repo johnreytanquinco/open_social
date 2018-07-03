@@ -9,7 +9,7 @@ dependencies:
 id: socialbase_pagetitleblock_2
 theme: socialbase
 region: hero
-weight: -20
+weight: -21
 provider: null
 plugin: social_page_title_block
 settings:
