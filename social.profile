@@ -372,7 +372,9 @@ function social_theme_setup(array &$install_state) {
     'extlink_preview',
     'custom_rules',
     'trading_pattern',
-    'auto_entitylabel'
+    'auto_entitylabel',
+    'open_id_connect',
+    'block_layout'
   );
   \Drupal::service('module_installer')->install($modules);
 
