@@ -19,7 +19,10 @@ third_party_settings:
 template: create_post_community
 label: 'Create post in the community'
 description: 'A user created a post in the community'
-text: {  }
+text:
+  -
+    value: "<p>&nbsp;&nbsp;</p>\r\n"
+    format: basic_html
 settings:
   'token options':
     clear: false

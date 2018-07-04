@@ -65,6 +65,7 @@ dependencies:
   - text
   - user
   - views
+  - views_infinite_scroll
   - votingapi
   - 'votingapi:votingapi'
 package: Social
