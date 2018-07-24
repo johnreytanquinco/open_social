@@ -16,4 +16,3 @@ Feature: Viewing group page components
     When I am on "/b/1/trabaho-xyz"
     Then I should see "Trabaho XYZ"
     And I should see element ".view-group-business-information" in the page
-    And I should not see a ".block-block-content8bb9d4bb-f182-4afc-b138-8a4b802824e4" element
