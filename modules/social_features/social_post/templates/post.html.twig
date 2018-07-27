@@ -26,7 +26,8 @@
     <div class="media-body">
       <div class="media-heading text-m">
         {% if content.user_id %}
-          {{ content.user_id }}
+          {# content.user_id #}
+          <a href="{{ path('entity.profile.canonical', {'profile': user.id}) }}">{{ user.displayname }}</a>
         {% endif %}
         <div class="post-date">{{ date }}</div>
       </div>
