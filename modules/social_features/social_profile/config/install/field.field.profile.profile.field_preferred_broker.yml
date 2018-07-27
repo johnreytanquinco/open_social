@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_preferred_broker
+    - profile.type.profile
+id: profile.profile.field_preferred_broker
+field_name: field_preferred_broker
+entity_type: profile
+bundle: profile
+label: 'Preferred Broker'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

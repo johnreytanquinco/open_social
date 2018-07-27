@@ -4,19 +4,42 @@ type: module
 core: 8.x
 configure: social_profile.settings
 dependencies:
-  - address:address
-  - drupal:block
-  - drupal:field
-  - field_group:field_group
-  - drupal:file
-  - drupal:image
-  - image_widget_crop:image_widget_crop
-  - profile:profile
-  - social_core:social_core
-  - drupal:system
-  - drupal:taxonomy
-  - drupal:telephone
-  - drupal:text
-  - drupal:user
-  - drupal:views
+  - address
+  - 'address:address'
+  - basic_auth
+  - block
+  - business_profile
+  - 'drupal:block'
+  - 'drupal:field'
+  - 'drupal:file'
+  - 'drupal:image'
+  - 'drupal:system'
+  - 'drupal:taxonomy'
+  - 'drupal:telephone'
+  - 'drupal:text'
+  - 'drupal:user'
+  - 'drupal:views'
+  - ds
+  - field
+  - field_group
+  - 'field_group:field_group'
+  - file
+  - hal
+  - image
+  - 'image_widget_crop:image_widget_crop'
+  - profile
+  - 'profile:profile'
+  - rest
+  - serialization
+  - simple_oauth
+  - social_core
+  - 'social_core:social_core'
+  - social_profile
+  - system
+  - taxonomy
+  - telephone
+  - text
+  - user
+  - views
+  - waterwheel_json_schema
 package: Social

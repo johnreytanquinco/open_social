@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - hal
+    - profile
+    - serialization
+    - simple_oauth
+    - user
+    - waterwheel_json_schema
+id: entity.profile
+plugin_id: 'entity:profile'
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+    - DELETE
+    - PATCH
+  formats:
+    - hal_json
+    - json
+    - xml
+    - json_schema
+  authentication:
+    - basic_auth
+    - oauth2
+    - cookie

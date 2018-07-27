@@ -2,8 +2,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.profile.profile.field_cover_photo
+    - field.field.profile.profile.field_preferred_broker
     - field.field.profile.profile.field_profile_address
-    - field.field.profile.profile.field_profile_banner_image
     - field.field.profile.profile.field_profile_expertise
     - field.field.profile.profile.field_profile_first_name
     - field.field.profile.profile.field_profile_function
@@ -18,63 +19,81 @@ dependencies:
     - profile.type.profile
   module:
     - address
-    - text
+    - ds
+    - image
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_profile
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      headerthumb:
+        - field_cover_photo
+      headerauthor:
+        - field_profile_image
+      authorname:
+        - field_profile_first_name
+        - field_profile_last_name
+      authorcountry:
+        - field_profile_address
 id: profile.profile.default
 targetEntityType: profile
 bundle: profile
 mode: default
 content:
+  field_cover_photo:
+    type: image
+    weight: 0
+    region: headerthumb
+    label: hidden
+    settings:
+      image_style: social_an_hero
+      image_link: ''
+    third_party_settings: {  }
   field_profile_address:
-    weight: 2
-    label: visually_hidden
+    type: address_plain
+    weight: 4
+    region: authorcountry
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: address_default
-    region: content
-  field_profile_expertise:
-    weight: 5
-    label: visually_hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_profile_interests:
-    weight: 4
-    label: visually_hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_profile_phone_number:
-    weight: 0
-    label: visually_hidden
+  field_profile_first_name:
+    type: string
+    weight: 2
+    region: authorname
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-    region: content
-  field_profile_profile_tag:
-    type: entity_reference_label
+  field_profile_image:
+    type: image
     weight: 1
-    label: visually_hidden
+    region: headerauthor
+    label: hidden
     settings:
-      link: false
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    region: content
-  field_profile_self_introduction:
+  field_profile_last_name:
+    type: string
     weight: 3
-    label: visually_hidden
-    settings: {  }
+    region: authorname
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-    type: text_default
-    region: content
 hidden:
-  field_profile_banner_image: true
-  field_profile_first_name: true
+  field_preferred_broker: true
+  field_profile_expertise: true
   field_profile_function: true
-  field_profile_image: true
-  field_profile_last_name: true
+  field_profile_interests: true
   field_profile_organization: true
+  field_profile_phone_number: true
+  field_profile_profile_tag: true
+  field_profile_self_introduction: true
   field_profile_show_email: true
