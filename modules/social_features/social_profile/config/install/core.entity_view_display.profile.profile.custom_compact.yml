@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.profile.custom_compact
     - field.field.profile.profile.field_cover_photo
     - field.field.profile.profile.field_preferred_broker
     - field.field.profile.profile.field_profile_address
@@ -16,82 +17,57 @@ dependencies:
     - field.field.profile.profile.field_profile_profile_tag
     - field.field.profile.profile.field_profile_self_introduction
     - field.field.profile.profile.field_profile_show_email
-    - image.style.medium
     - profile.type.profile
   module:
-    - address
     - ds
-    - image
 third_party_settings:
   ds:
     layout:
-      id: pattern_profile
+      id: ds_1col
       library: null
       disable_css: false
       entity_classes: all_classes
       settings:
-        pattern:
-          field_templates: default
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
     regions:
-      headerthumb:
-        - field_cover_photo
-      headerauthor:
-        - field_profile_image
-      authorname:
+      ds_content:
         - field_profile_first_name
         - field_profile_last_name
-      authorcountry:
-        - field_profile_address
-id: profile.profile.default
+id: profile.profile.custom_compact
 targetEntityType: profile
 bundle: profile
-mode: default
+mode: custom_compact
 content:
-  field_cover_photo:
-    type: image
-    weight: 0
-    region: headerthumb
-    label: hidden
-    settings:
-      image_style: social_an_hero
-      image_link: ''
-    third_party_settings: {  }
-  field_profile_address:
-    type: address_plain
-    weight: 4
-    region: authorcountry
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
   field_profile_first_name:
     type: string
-    weight: 2
-    region: authorname
+    weight: 0
+    region: ds_content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  field_profile_image:
-    type: image
-    weight: 1
-    region: headerauthor
-    label: hidden
-    settings:
-      image_style: medium
-      image_link: ''
-    third_party_settings: {  }
   field_profile_last_name:
     type: string
-    weight: 3
-    region: authorname
+    weight: 1
+    region: ds_content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
 hidden:
+  field_cover_photo: true
   field_preferred_broker: true
+  field_profile_address: true
   field_profile_expertise: true
   field_profile_function: true
+  field_profile_image: true
   field_profile_interests: true
   field_profile_organization: true
   field_profile_phone_number: true
