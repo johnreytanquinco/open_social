@@ -36,3 +36,9 @@ Feature: Viewing post contents in the newsfeed
     And I am on the homepage  
     And I should see element ".field--name-field-signup" in the page
     And I should see element ".openid-connect-login-form" in the page
+
+  Scenario: Article poster details is displayed
+    Given I am an anonymous user
+    And I am on the homepage
+    Then I should see "Fortune"
+    And I should see element ".avatar" in the page
