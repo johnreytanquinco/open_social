@@ -374,7 +374,10 @@ function social_theme_setup(array &$install_state) {
     'trading_pattern',
     'auto_entitylabel',
     'open_id_connect',
-    'block_layout'
+    'block_layout',
+    'paragraphs',
+    'paragraphs_type_permissions',
+    'graphql_core'
   );
   \Drupal::service('module_installer')->install($modules);
 
